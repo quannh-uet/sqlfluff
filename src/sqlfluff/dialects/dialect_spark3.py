@@ -123,6 +123,14 @@ spark3_dialect.replace(
 )
 
 spark3_dialect.add(
+    # Add backquoted indentifier for spark sql
+    BackQuotedIdentifierSegment=NamedParser(
+        "back_quote",
+        CodeSegment,
+        name="quoted_identifier",
+        type="identifier",
+        trim_chars=("`",),
+    ),
     # Add Hive Segments TODO : Is there a way to retrieve this w/o redefining?
     DoubleQuotedLiteralSegment=NamedParser(
         "double_quote",
